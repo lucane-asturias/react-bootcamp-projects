@@ -1,8 +1,8 @@
 .Palette {
 	height: 100vh;
 	overflow: hidden;
-	display: flex;
-	flex-direction: column;
+	display: flex; /* veja o */
+	flex-direction: column; /* resultado */
 }
 
 .Palette-colors {
