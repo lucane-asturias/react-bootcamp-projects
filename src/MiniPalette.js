@@ -56,7 +56,7 @@ function MiniPalette(props) { //functional component that accepts a prop (in thi
         />
     ));
     return (
-        <div className={classes.root}>
+        <div className={classes.root} onClick={props.handleClick}>
             <div className={classes.colors}>{miniColorBoxes}</div>
                 <h5 className={classes.title}>
                     {paletteName} <span className={classes.emoji}>{emoji}</span>
