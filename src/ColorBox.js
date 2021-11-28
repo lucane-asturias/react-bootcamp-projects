@@ -15,7 +15,7 @@ class ColorBox extends Component {
     });
   }
   render() {
-    const { name, background, moreUrl } = this.props;
+    const { name, background, moreUrl, showLink } = this.props;
     const { copied } = this.state;
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
@@ -32,12 +32,14 @@ class ColorBox extends Component {
             <button className="copy-button">Copy</button>
           </div>
           {/* stopPropagation to not also fire the event from the parent!!! */}
+          {showLink && ( //showLink will show only if it is true
           <Link 
             to={moreUrl} 
-            onCLick={e => e.stopPropagation()}
+            onClick={e => e.stopPropagation()}
           >
             <span className="see-more">More</span>
           </Link>
+          )}
         </div>
       </CopyToClipboard>
     );
