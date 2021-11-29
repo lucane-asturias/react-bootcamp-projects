@@ -26,7 +26,7 @@ class Palette extends Component {
         name={color.name} 
         key={color.id} 
         moreUrl={`/palette/${id}/${color.id}`} //palette id and color id
-        showLink={true}
+        showingFullPalette
       />
   	))
     // console.log(colors[level])
