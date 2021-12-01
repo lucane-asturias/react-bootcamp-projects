@@ -2,6 +2,8 @@ export default {
   root: {
     backgroundColor: "blue",
     height: "100vh",
+    overflow: "auto", //to only show scrollbars if palettes don't fit on one screen.
+    overflowX: "hidden",
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center"
