@@ -11,10 +11,10 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
-import DraggableColorBox from './DraggableColorBox';
 import { ValidatorForm , TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
-
+import DraggableColorList from "./DraggableColorList";
+import { arrayMove } from "react-sortable-hoc";
 
 const drawerWidth = 400;
 
@@ -77,19 +77,25 @@ const styles = theme => ({
 });
 
 class NewPaletteForm extends Component {
+  static defaultProps = {
+    maxColors: 20
+  }
    constructor(props) {
     super(props)
     this.state = {
       open: false,
       currentColor: "#e08764",
       newColorName: "",
-      colors: [{ color: "blue", name: "blue" }],
+      colors: this.props.palettes[0].colors,
       newPaletteName: ""
     };
-    this.updateCurrentColor = this.updateCurrentColor.bind(this)
-    this.addNewColor = this.addNewColor.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.updateCurrentColor = this.updateCurrentColor.bind(this);
+    this.addNewColor = this.addNewColor.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteColor = this.deleteColor.bind(this);
+    this.clearPalette = this.clearPalette.bind(this);
+    this.addRandomColor = this.addRandomColor.bind(this);
    };
 
   componentDidMount() {
@@ -127,6 +133,20 @@ class NewPaletteForm extends Component {
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value })
   }
+
+  clearPalette() {
+    this.setState({ colors: [] })
+  }
+
+  addRandomColor() {
+    //pick random color from existing palettes
+    const allColors = this.props.palettes.map(p => p.colors).flat();
+    let rand = Math.floor(Math.random() * allColors.length);
+    const randomColor = allColors[rand];
+    this.setState({ colors: [...this.state.colors, randomColor] }) //all colors from state + randomColor;
+    console.log(allColors)
+  }
+
   handleSubmit() {
     let newColorName = this.state.newPaletteName;
     const newPalette = {
@@ -143,10 +163,16 @@ class NewPaletteForm extends Component {
       colors: this.state.colors.filter(color => color.name !== colorName)
     })
   }
+  onSortEnd = ({oldIndex, newIndex}) => {
+    this.setState(({colors}) => ({
+      colors: arrayMove(colors, oldIndex, newIndex),
+    }));
+  };
 
   render() {
-    const { classes /*, theme*/ } = this.props;
-    const { open } = this.state;
+    const { classes, maxColors } = this.props;
+    const { open, colors } = this.state;
+    const paletteIsFull = colors.length >= maxColors; 
 
     return (
       <div className={classes.root}>
@@ -206,19 +232,31 @@ class NewPaletteForm extends Component {
           <Divider />
           <Typography variant="h4">Design Your Palette</Typography>
           <div> 
-            <Button variant="contained" color="secondary">Clear Palette</Button>
-            <Button variant="contained" color="primary">Random Color</Button>
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              onClick={this.clearPalette}
+            >
+              Clear Palette
+            </Button>
+            <Button 
+              variant="contained" 
+              color="primary"
+              disabled={paletteIsFull}
+              onClick={this.addRandomColor}
+            >
+              Random Color
+            </Button>
           </div>
           <ChromePicker 
             color={this.state.currentColor}
             onChangeComplete={this.updateCurrentColor} 
           />
-          <ValidatorForm onSubmit={this.addNewColor} ref='form'>
+          <ValidatorForm onSubmit={this.addNewColor} instantValidate={false} ref='form'>
             <TextValidator
               value={this.state.newColorName}
               name="newColorName"
               onChange={this.handleChange}
-              // instantValidate={false}
               validators={["required", "isColorNameUnique", "isColorUnique"]}
               errorMessages={[
                 "Enter a color name",
@@ -227,12 +265,13 @@ class NewPaletteForm extends Component {
               ]}
             />
             <Button
-              variant='contained'
-              type='submit'
-              color='primary'
-              style={{ backgroundColor: this.state.currentColor }}
+              variant="contained"
+              type="submit"
+              color="primary"
+              disabled={paletteIsFull}
+              style={{ backgroundColor: paletteIsFull ? "grey" : this.state.currentColor }}
             >
-              Add Color
+              { paletteIsFull ? "Palette Full" : "Add Color" }
             </Button>
           </ValidatorForm>
         </Drawer>
@@ -242,15 +281,14 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          <DraggableColorList 
+            colors={colors} 
+            deleteColor={this.deleteColor} 
+            axis='xy'
+            onSortEnd={this.onSortEnd}
+          />
 
-            {this.state.colors.map(color => (
-              <DraggableColorBox 
-                key={color.name}
-                color={color.color} 
-                name={color.name}
-                handleClick={() => this.deleteColor(color.name)}
-              />
-            ))}
+            
         </main>
       </div>
     );

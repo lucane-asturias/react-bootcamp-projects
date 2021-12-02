@@ -24,7 +24,7 @@ class App extends Component {
   }
   render() {
     return (
-      <Switch>\
+      <Switch>
         <Route 
             exact 
             path="/palette/new"
