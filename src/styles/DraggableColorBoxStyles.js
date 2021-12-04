@@ -8,6 +8,7 @@ const styles = {
     display: "inline-block",
     position: "relative",
     cursor: "pointer",
+    marginBottom: "-5.8px", //this fix the little whit'e space in the intersection of boxes
     // "&:hover svg": { //when you hover the svg of deleteIcon (this is bad!! bc is considering all svg's)
     "&:hover $deleteIcon": { //easiest way to style while hovering is selecting the class with $ sign
       color: "white",
@@ -32,7 +33,6 @@ const styles = {
     width:"100%",
     left: "0px",
     bottom: "0px",
-    padding: '0 0.7rem 0.5rem 1rem',
     color: "rgba(0, 0, 0, 0.5)",
     letterSpacing: "1px",
     textTransform: "uppercase",
