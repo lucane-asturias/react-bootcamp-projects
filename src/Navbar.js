@@ -54,7 +54,7 @@ class Navbar extends Component {
                 backgroundColor: 'green',
                 boxShadow: 'none',
               }} 
-              railStyle={{height: 8}}
+              railStyle={{height: 8, background: 'linear-gradient(90deg, #eee, #333)'}}
             />
           </div>
         </div>
