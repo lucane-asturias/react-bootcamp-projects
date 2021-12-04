@@ -1,14 +1,15 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
+import { Emoji } from 'emoji-mart';
 import styles from "./styles/PaletteFooterStyles";
 
 
 function PaletteFooter(props) {
   const { paletteName, emoji, classes } = props;
   return (
-        <footer className={classes.PaletteFooter}>
+        <footer className={classes.root}>
           {paletteName}
-          <span className={classes.emoji}>{emoji}</span>
+          <Emoji emoji={emoji} set="google" size={20} />
         </footer>
     );
   }

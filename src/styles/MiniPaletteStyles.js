@@ -25,12 +25,11 @@ export default {
         color: "black",
         paddingTop: "0.5rem",
         fontSize: "1rem",
-        position: "relative" 
+        position: "relative",
+        "& span": { //styling emoji
+            marginLeft: "0.5rem",
+        }
 
-    },
-    emoji: {
-        marginLeft: "0.5rem",
-        fontSize: "1.5rem"
     },
     miniColor: {
         height: "25%",

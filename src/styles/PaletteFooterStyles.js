@@ -1,14 +1,15 @@
 export default {
-  PaletteFooter: {
-    backgroundColor: "white",
+  root: {
+    backgroundColor: "#fff",
     height: "5vh",
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
-    fontWeight: "bold"
-  },
-  emoji: {
-    fontSize: "1.5rem",
-    margin: "0 1rem"
+    fontWeight: "500",
+    fontSize: "1.2rem",
+    margin: "0 1rem",
+    "& span": { //styling emoji
+      margin: "0 1rem"
+    }
   }
 };
