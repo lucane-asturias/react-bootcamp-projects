@@ -1,5 +1,6 @@
 //move logic into styles object
 import chroma from "chroma-js";
+import sizes from "./sizes";
 
 // const styles = {
 export default {
@@ -11,12 +12,25 @@ export default {
     display: "inline-block",
     position: "relative",
     cursor: "pointer",
+    
     /*margin-top: -3.8px;  this was for wh'ite space. */
     // "&:hover button": { em vez de estilizar todos os botões usando classe dinâmica
     "&:hover $copyButton": {
       opacity: 1
       // transition: 'all 0.3s ease-in'
-    }
+    },
+    [sizes.down("lg")]: {
+      width: "25%",
+      height: props => (props.showingFullPalette ? "20%" : "50%")
+    },
+    [sizes.down("md")]: {
+      width: "50%",
+      height: props => (props.showingFullPalette ? "10%" : "50%")
+    },
+    [sizes.down("xs")]: {
+      width: "100%",
+      height: props => (props.showingFullPalette ? "5%" : "10%"),
+    },
   },
   copyText: {
     color: props => 
