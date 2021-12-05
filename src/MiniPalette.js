@@ -11,7 +11,7 @@ class MiniPalette extends Component {
     }
     deletePalette(e) {
         e.stopPropagation();
-        this.props.handleDelete(this.props.id)
+        this.props.openDialog(this.props.id)
     }
     render() {
         const { classes, paletteName, emoji, colors, handleClick } = this.props;
@@ -30,7 +30,7 @@ class MiniPalette extends Component {
                     style={{ transition: "all 0.3s ease-in-out"}} //override built-in styles from mu
                     onClick={this.deletePalette}
                 />
-            <div className={classes.colors}>{miniColorBoxes}</div>
+                <div className={classes.colors}>{miniColorBoxes}</div>
                 <h5 className={classes.title}>
                     {paletteName} <Emoji emoji={emoji} set="google" size={18} />
                 </h5>

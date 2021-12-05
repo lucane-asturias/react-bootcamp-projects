@@ -17,6 +17,7 @@ export default {
     overflow: "auto", //to only show scrollbars if palettes don't fit on one screen.
     overflowX: "hidden",
     display: "flex",
+    backgroundSize: "cover",
     alignItems: "flex-start",
     justifyContent: "center",
     paddingBottom: '1.5rem', //gives some space on the bottom
@@ -41,8 +42,8 @@ export default {
       'progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3932", endColorstr="#ff00ae",GradientType=1 )',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
-    [sizes.down('small')]: {
-      fontSize: '1.8rem',
+    [sizes.down('sm')]: {
+      fontSize: '1.5rem',
     },
   },
   container: {
@@ -55,10 +56,10 @@ export default {
       width: "60%"
     },
     [sizes.down("md")]: {
-      width: "75%"
+      width: "70%"
     },
     [sizes.down("xs")]: {
-      width: "90%"
+      width: "85%"
     }
   },
   nav: {
@@ -97,18 +98,21 @@ export default {
       // transition: "all 0.4s ease-in-out",
       },
       [sizes.down('sm')]: {
-        fontSize: '1.6rem',
+        marginTop: ".20rem",
+        fontSize: '1.2rem',
       },
+
     },
   },
   palettes: {
+    marginTop: ".65rem",
     boxSizing: "border-box",
     width: "100%",
     display: "grid",
-    gridTemplateColumns: "repeat(3, 30%)",
+    gridTemplateColumns: "repeat(3, 1fr)",
     gridGap: "2.5rem",
     [sizes.down("md")]: {
-      gridTemplateColumns: "repeat(2, 50%)"
+      gridTemplateColumns: "repeat(2, 1fr)"
     },
     [sizes.down("xs")]: {
       gridTemplateColumns: "repeat(1, 100%)",
