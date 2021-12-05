@@ -52,7 +52,8 @@ const styles = theme => ({
     alignItems: "center"
   },
   buttons: {
-    width: "100%"
+    width: "100%",
+    marginTop: '1rem',
   },
   button: {
     width: "50%"
