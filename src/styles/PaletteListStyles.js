@@ -87,6 +87,7 @@ export default {
       textDecoration: "none",
       border: "none",
       padding: '0 3px',
+      marginTop: "-.200rem",
       marginLeft: '2px',
       fontSize: '1.4rem',
       transition: "all 0.3s ease-in-out",
