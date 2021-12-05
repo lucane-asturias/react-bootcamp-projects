@@ -2,6 +2,15 @@ import sizes from "./sizes";
 import bg from "./bg.svg";
 
 export default {
+  "@global": {
+    ".fade-exit": {
+      opacity: 1
+    },
+    ".fade-exit-active": {
+      opacity: 0,
+      transition: "opacity 500ms ease-out"
+    }
+  },
   root: {
     // backgroundColor: "blue",
     minHeight: "100vh",
@@ -10,7 +19,7 @@ export default {
     display: "flex",
     alignItems: "flex-start",
     justifyContent: "center",
-    paddingBottom: '1rem', //gives some space on the bottom
+    paddingBottom: '1.5rem', //gives some space on the bottom
     // marginBottom: "50px",
     backgroundColor: "#1e8feb",
     // background by SVGbackgrounds.com
@@ -68,10 +77,29 @@ export default {
     [sizes.down('xs')]: {
       height: '4.5rem',
     },
-    "& a": {
-      color: "white",
-      textDecoration: "none"
-    } 
+  },
+  linktag: {
+    display: 'flex',
+    height: "50%",
+    '& a': {
+      color: '#eee',
+      textDecoration: "none",
+      border: "none",
+      padding: '0 3px',
+      marginLeft: '2px',
+      fontSize: '1.4rem',
+      transition: "all 0.3s ease-in-out",
+      backgroundColor: 'transparent',
+      '&:hover': {
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        background:
+      '-webkit-linear-gradient(left, rgba(255,57,50,.70) 0%,rgba(242,252,47,.70) 25%,rgba(48,255,106,.70) 50%,rgba(40,172,255,.70) 75%,rgba(255,0,255,.70) 100%)',
+      // transition: "all 0.4s ease-in-out",
+      },
+      [sizes.down('sm')]: {
+        fontSize: '1.6rem',
+      },
+    },
   },
   palettes: {
     boxSizing: "border-box",
