@@ -44,6 +44,7 @@ class PaletteMetaForm extends Component {
       emoji: emoji.colons
     };
     this.props.handleSubmit(newPalette);
+    this.setState({ stage: "" }); //closing emoji picker
   } 
 
   handleClickOpen = () => {
@@ -56,7 +57,7 @@ class PaletteMetaForm extends Component {
 
   render() {
     const { newPaletteName } = this.state;
-    const { handleSubmit, hideForm } = this.props;
+    const { hideForm } = this.props;
     return (
       <div>
         <Dialog open={this.state.stage === 'emoji'} onClose={hideForm} >
