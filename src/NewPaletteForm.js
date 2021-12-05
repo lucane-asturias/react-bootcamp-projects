@@ -154,6 +154,7 @@ class NewPaletteForm extends Component {
             deleteColor={this.deleteColor} 
             axis='xy'
             onSortEnd={this.onSortEnd}
+            distance={20} //unless its moving past 20pixels, it will not be draggable
           />
 
             
