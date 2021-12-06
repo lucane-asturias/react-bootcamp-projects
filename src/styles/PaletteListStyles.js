@@ -13,14 +13,14 @@ export default {
   },
   root: {
     // backgroundColor: "blue",
-    minHeight: "100vh",
+    height: "100vh",
     overflow: "auto", //to only show scrollbars if palettes don't fit on one screen.
     overflowX: "hidden",
     display: "flex",
     backgroundSize: "cover",
     alignItems: "flex-start",
     justifyContent: "center",
-    paddingBottom: '1.5rem', //gives some space on the bottom
+    paddingBottom: '1.5rem',
     // marginBottom: "50px",
     backgroundColor: "#1e8feb",
     // background by SVGbackgrounds.com
@@ -53,13 +53,13 @@ export default {
     flexDirection: "column",
     flexWrap: "wrap",
     [sizes.down("xl")]: {
-      width: "60%"
+      width: "75%"
     },
     [sizes.down("md")]: {
-      width: "70%"
+      width: "85%"
     },
     [sizes.down("xs")]: {
-      width: "85%"
+      width: "95%"
     }
   },
   nav: {
@@ -108,6 +108,7 @@ export default {
   palettes: {
     marginTop: ".65rem",
     boxSizing: "border-box",
+    paddingBottom: '2.5rem',
     width: "100%",
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",

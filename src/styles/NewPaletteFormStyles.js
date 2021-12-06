@@ -46,7 +46,7 @@ const styles = theme => ({
   },
   container: {
     width: "85%",
-    height: "85%",
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

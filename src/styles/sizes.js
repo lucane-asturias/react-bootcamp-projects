@@ -2,11 +2,11 @@ export default {
   up() {},
   down(size) {
     const sizes = {
-      xs: "575.98px",
-      sm: "767.98px",
-      md: "991.98px",
-      lg: "1199.98px",
-      xl: "1600px"
+      xs: "59.375em",
+      sm: "50em",
+      md: "41.25em",
+      lg: "31.25em",
+      xl: "21.875em"
     };
     return `@media (max-width: ${sizes[size]})`;
   }
