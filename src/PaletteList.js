@@ -45,8 +45,8 @@ class PaletteList extends Component {
     this.closeDialog();
   }
   render() {
-    const { palettes, classes, deletePalette } = this.props;
-    const { openDeleteDialog, deletingId } = this.state;
+    const { palettes, classes } = this.props;
+    const { openDeleteDialog } = this.state;
     // console.log(palettes)
     return (
       <div className={classes.root}>
@@ -64,7 +64,6 @@ class PaletteList extends Component {
                     {...palette} 
                     // handleClick={() => this.goToPalette(palette.id)} the culprit for rendering component
                     goToPalette={this.goToPalette}
-                    // handleDelete={deletePalette}
                     openDialog={this.openDialog} 
                     key={palette.id}
                     id={palette.id}
