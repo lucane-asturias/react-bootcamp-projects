@@ -103,6 +103,18 @@ class App extends Component {
                   </Page>
                 )}
               />
+              <Route
+                //route acting as an else; no path matching unless the established ones
+                render={(routeProps) => (
+                  <Page> 
+                    <PaletteList 
+                      palettes={this.state.palettes}
+                      deletePalette={this.deletePalette} 
+                      {...routeProps} 
+                    />
+                  </Page>
+                )} 
+              />
             </Switch>
           </CSSTransition>
         </TransitionGroup>
